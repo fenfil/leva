@@ -1,7 +1,5 @@
 import { useTypedSelector } from '@/store';
 
-import { Navigation } from './Navigation';
-
 export const Header = () => {
   const user = useTypedSelector((s) => s.user.name);
 
@@ -22,6 +20,9 @@ export const Header = () => {
             </a>
             <a className="nav__link" href="#">
               Verified
+            </a>
+            <a className="nav__link" href="/login">
+              login
             </a>
           </nav>
         </div>

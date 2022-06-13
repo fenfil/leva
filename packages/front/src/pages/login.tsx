@@ -10,11 +10,14 @@ const Page = () => {
 
   return (
     <div>
-      <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <input placeholder="name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <input placeholder="password" type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
       <button type="button" onClick={() => dispatch(login({ name, password }))}>
         Login
       </button>
+      <p>
+        Don't have an account? <a href="signup">sign up</a>
+      </p>
     </div>
   );
 };
