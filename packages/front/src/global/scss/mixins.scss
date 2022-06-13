@@ -1,0 +1,10 @@
+@mixin light {
+  :global(.light) & {
+    @content;
+  }
+}
+@mixin dark {
+  :global(.dark) & {
+    @content;
+  }
+}

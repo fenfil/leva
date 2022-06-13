@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["es2019", "dom"],
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "allowJs": true,
+    "noEmit": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "isolatedModules": true,
+    "strict": false,
+    "baseUrl": "./",
+    "paths": {
+      "@shared*": ["../back/libs/shared*"],
+      "@scss*": ["src/global/scss*"],
+      "@mixins": ["src/global/scss/mixins.scss"],
+      "@global*": ["src/global*"],
+      "@/*": ["src/*"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.scss", "**/*.tsx", "lib/redux.js", "../back/libs/shared*"]
+}

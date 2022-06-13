@@ -1,0 +1,19 @@
+**/node_modules/
+.DS_Store
+.env
+.next/
+logs/
+*.log
+videos/
+banners/
+dist/
+.idea/
+
+# yarn >2
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

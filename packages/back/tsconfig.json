@@ -1,0 +1,25 @@
+{
+  "ts-node-dev": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  },
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "allowJs": false,
+    "strictNullChecks": false,
+    "skipLibCheck": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "lib": ["es2019", "dom"],
+    "module": "commonjs",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true
+  }
+}

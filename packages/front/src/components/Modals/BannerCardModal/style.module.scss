@@ -1,0 +1,28 @@
+.bannerModal {
+  display: grid;
+  grid-template-columns: 1fr 290px;
+  grid-template-rows: 1fr;
+  grid-gap: 30px;
+  font-size: 1.16rem;
+}
+.banner {
+  width: 100%;
+  margin-bottom: 36px;
+}
+.title {
+  font-weight: bold;
+  font-size: 1.66rem;
+}
+.description {
+  font-weight: 400;
+  font-size: 1.16rem;
+  color: var(--color-modal-text-muted);
+}
+.linkTitle {
+  font-size: 1.16rem;
+  font-weight: 400;
+}
+.payout {
+  font-weight: bold;
+  font-size: 1.66rem;
+}
