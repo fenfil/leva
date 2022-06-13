@@ -28,6 +28,16 @@ export const fetchUser = createAsyncThunk<FetchUserResponse, void>('user/fetchUs
   }
 });
 
+export const logout = createAsyncThunk<FetchUserResponse>('user/logout', async (params, { dispatch }) => {
+  try {
+    await api.get<FetchUserResponse>('/auth/logout');
+    dispatch(fetchUser());
+  } catch (error) {
+    handleError("Can't log out", error);
+    return Promise.reject();
+  }
+});
+
 export const login = createAsyncThunk<FetchUserResponse, { name: string; password: string }>(
   'user/login',
   async (params, { dispatch }) => {
@@ -35,7 +45,7 @@ export const login = createAsyncThunk<FetchUserResponse, { name: string; passwor
       await api.post<FetchUserResponse>('/auth/login', params);
       dispatch(fetchUser());
     } catch (error) {
-      handleError("Can't get user", error);
+      handleError("Can't log in", error);
       return Promise.reject();
     }
   },
@@ -48,7 +58,7 @@ export const signup = createAsyncThunk<FetchUserResponse, { name: string; passwo
       await api.post<FetchUserResponse>('/auth/signup', params);
       dispatch(fetchUser());
     } catch (error) {
-      handleError("Can't get user", error);
+      handleError("Can't sign up", error);
       return Promise.reject();
     }
   },

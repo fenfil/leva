@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { RequestHandler } from 'express';
 import helmet from 'helmet';
+import morgan from 'morgan';
 import passport from 'passport';
 import { config } from 'src/config';
 import { getRouter } from 'src/routes';
@@ -20,6 +21,7 @@ export const bootstrapExpress = async () => {
       credentials: true,
     }),
   );
+  app.use(morgan(':date :method :url :status :res[content-length] - :total-time ms'));
 
   app.use(helmet() as RequestHandler);
   app.use(cookieParser());
