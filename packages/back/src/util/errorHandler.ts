@@ -12,7 +12,7 @@ export const errorHandler = async (error: Error, req: Request, res: Response, ne
     if (error instanceof SequelizeValidationError) {
       res.status(400);
       return res.json({
-        errors: error.errors.map((err) => err.message),
+        error: error.errors[0].message,
       });
     }
 

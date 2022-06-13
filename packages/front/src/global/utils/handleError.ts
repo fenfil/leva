@@ -2,7 +2,7 @@ import { AxiosError } from 'axios';
 import { toastr } from 'react-redux-toastr';
 
 export const handleError = (errorTitle: string, error: AxiosError) => {
-  console.error(errorTitle, error);
+  console.error(errorTitle, error.response);
 
   if (error.response) {
     console.log('response error');
