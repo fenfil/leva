@@ -68,9 +68,12 @@ body {
   position: relative;
 
   color: #752105;
-  text-decoration: none;
 
   transition: clolr 0.2s linear;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .nav__link:after {
