@@ -1,4 +1,4 @@
-import { combineReducers, configureStore, createReducer } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 

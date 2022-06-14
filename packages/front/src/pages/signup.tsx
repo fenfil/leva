@@ -10,13 +10,21 @@ const Page = () => {
   const [email, setEmail] = useState('');
 
   return (
-    <div>
+    <div className="login">
+    <div className="input-form">
       <input placeholder="name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      <input placeholder="email" type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <input placeholder="password" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+    </div>
+    <div className="input-form">
+      <input placeholder="password" type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
+    </div>
+    <div className="input-form">
+      <input placeholder="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+    </div>
+    <div className="log">
       <button type="button" onClick={() => dispatch(signup({ name, password, email }))}>
-        Signup
+        sign up
       </button>
+    </div>
       <p>
         Already have an Account? <a href="/login">login</a>
       </p>

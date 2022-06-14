@@ -1,5 +1,6 @@
 import { handleError } from '@global/utils/handleError';
 import { AnyAction, Reducer, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { toastr } from 'react-redux-toastr';
 
 import { api } from '../utils/api';
 
@@ -21,6 +22,16 @@ export const fetchCars = createAsyncThunk<CleanCar[]>('car/fetchCars', async (pa
   try {
     const res = await api.get<CleanCar[]>('/car');
     return res.data;
+  } catch (error) {
+    handleError("Can't get cars", error);
+    return Promise.reject();
+  }
+});
+
+export const addCar = createAsyncThunk<any, any>('car/addCar', async (params, { dispatch }) => {
+  try {
+    await api.post('/car', params);
+    toastr.success('Yay', 'New car added!');
   } catch (error) {
     handleError("Can't get cars", error);
     return Promise.reject();

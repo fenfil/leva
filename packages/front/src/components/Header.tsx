@@ -14,17 +14,20 @@ export const Header = () => {
             Four wheels
           </a>
           <nav className="nav">
-            <a className="nav__link" href="#">
+            <a className="nav__link" href="/add">
+              Add Car
+            </a>
+            <a className="nav__link" href="/about">
               About
             </a>
-            <a className="nav__link" href="#">
+            <a className="nav__link" href="/service">
               Service
             </a>
-            <a className="nav__link" href="#">
-              Work
-            </a>
-            <a className="nav__link" href="#">
+            <a className="nav__link" href="/verified">
               Verified
+            </a>
+            <a className="nav__link" href="/request">
+              Request
             </a>
             {user ? (
               <span className="nav__user" onClick={() => dispatch(logout())}>
