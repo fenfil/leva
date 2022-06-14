@@ -19,6 +19,7 @@ module.exports = {
   ],
   ignorePatterns: ['.eslintrc.js'],
   rules: {
+    'prefer-destructuring': 0,
     'max-len': ['warn', 200],
     'max-classes-per-file': 0,
     // please dont

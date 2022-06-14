@@ -8,9 +8,11 @@ import { auth } from '../util/auth';
 export const getApiCarRouter = () => {
   const router = Router();
 
-  router.get('/', async (req: Request, res: Response, next: NextFunction) => {
+  router.get('/', auth(UserRole.guest), async (req: Request, res: Response, next: NextFunction) => {
+    const user: User = req.user as User;
     try {
-      const cars = await Car.findAll({ where: { verified: true } });
+      const isMod = user && [UserRole.admin, UserRole.moderator].includes(user.role);
+      const cars = await Car.findAll({ where: isMod ? {} : { verified: true } });
       res.json(cars);
     } catch (error) {
       next(error);

@@ -1,6 +1,11 @@
 .car {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 50%;
+  height: 50px;
   padding: 5px;
+  margin: 5px;
   background-color: #ffffff50;
   border-radius: 5px;
   box-shadow: 0 0 5px 0 #00000050;
