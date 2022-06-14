@@ -20,14 +20,11 @@ export const getApiCarRouter = () => {
   });
 
   router.post('/', auth(), async (req: Request, res: Response, next: NextFunction) => {
-    const {
-      user,
-      body: { name },
-    } = req;
+    const { user, body } = req;
 
     try {
       await Car.create({
-        name,
+        ...body,
         verifierId: (user as User).id,
       });
       res.json({});
@@ -49,6 +46,15 @@ export const getApiCarRouter = () => {
         verifierId: (user as User).id,
       });
       res.json({});
+    } catch (error) {
+      next(error);
+    }
+  });
+
+  router.get('/:id', auth(), async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const car = await Car.findByPk(+req.params.id);
+      res.json(car);
     } catch (error) {
       next(error);
     }

@@ -8,6 +8,9 @@ export interface CleanCar {
   id: number;
   name: string;
   verified: boolean;
+  year: number;
+  mileage: number;
+  color: string;
 }
 
 export type CarState = {

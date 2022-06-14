@@ -1,4 +1,4 @@
-import { INTEGER } from 'sequelize';
+import { FLOAT, INTEGER } from 'sequelize';
 import { AutoIncrement, BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
 
 import { User } from './User';
@@ -17,6 +17,15 @@ export class Car extends Model<Car, {}> {
 
   @Column
   name: string;
+
+  @Column(INTEGER.UNSIGNED)
+  year: number;
+
+  @Column(FLOAT)
+  mileage: number;
+
+  @Column
+  color: string;
 
   @Column
   verified: boolean;

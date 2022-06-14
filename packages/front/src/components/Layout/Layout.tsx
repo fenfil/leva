@@ -2,7 +2,8 @@ import { fetchUser } from '@global/slices/user';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { Header } from '../Header';
+import { Footer } from '../Footer/Footer';
+import { Header } from '../Header/Header';
 import styles from './Layout.module.scss';
 
 export const Layout = ({ children }) => {
@@ -13,7 +14,8 @@ export const Layout = ({ children }) => {
   return (
     <div className={styles.wrapper}>
       <Header />
-      <div>{children}</div>
+      <div className={styles.content}>{children}</div>
+      <Footer />
     </div>
   );
 };

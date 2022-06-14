@@ -16,6 +16,8 @@ export const handleError = (errorTitle: string, error: AxiosError) => {
     if (data.field) err = `${data.field}: ${data.error}`;
     else if (Array.isArray(data.message)) err = data.message.join('\n');
     else if (data.message) err = data.message;
+    else if (data.error) err = data.error;
+    else err = (error as AxiosError).response.statusText;
     console.log(err);
 
     toastr.error(errorTitle, err);

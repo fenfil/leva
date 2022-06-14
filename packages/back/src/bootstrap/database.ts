@@ -8,10 +8,10 @@ import { container } from 'src/util/container';
 
 export const bootstrapDB = async () => {
   const sequelize = new Sequelize(config.database);
-  User.sync({});
-  CookieSession.sync({});
-  Car.sync({});
-  Request.sync({});
+  User.sync({ alter: true });
+  CookieSession.sync({ alter: true });
+  Car.sync({ alter: true });
+  Request.sync({ alter: true });
 
   container.bind(Sequelize).toConstantValue(sequelize);
 

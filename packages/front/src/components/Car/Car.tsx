@@ -23,6 +23,7 @@ export const Car = ({ car }: { car: CleanCar }) => {
   return (
     <div className={styles.car}>
       <div>{car.name}</div>
+      <div>{car.year}</div>
       {verified ? (
         ''
       ) : (
