@@ -1,8 +1,10 @@
 import * as bcrypt from 'bcrypt';
 import { ENUM, INTEGER } from 'sequelize';
-import { AutoIncrement, Column, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
+import { AutoIncrement, Column, HasMany, Model, PrimaryKey, Table, Unique } from 'sequelize-typescript';
 import { config } from 'src/config';
 import { UserRole } from 'src/util/UserRole';
+
+import { Car } from './Cars';
 
 @Table({
   underscored: true,
@@ -39,4 +41,7 @@ export class User extends Model<User, {}> {
   static async encryptPassword(password: string): Promise<string> {
     return bcrypt.hash(password, config.userPasswordSaltRounds);
   }
+
+  @HasMany(() => Car)
+  cars: Car;
 }

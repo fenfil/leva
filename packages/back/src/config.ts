@@ -1,5 +1,6 @@
 import { SequelizeOptions } from 'sequelize-typescript';
 
+import { Car } from './models/Cars';
 import { CookieSession } from './models/CookieSession';
 import { User } from './models/User';
 
@@ -13,7 +14,7 @@ export const config = {
     password: process.env.DB_PASSWORD,
     dialect: 'mariadb',
     autoLoadModels: true,
-    models: [User, CookieSession],
+    models: [User, CookieSession, Car],
     sync: {
       force: true,
       alter: true,

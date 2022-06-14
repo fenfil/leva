@@ -1,7 +1,8 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore, createReducer } from '@reduxjs/toolkit';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 
+import { carReducer } from '../global/slices/cars';
 import { deviceReducer } from '../global/slices/device';
 import { modalReducer } from '../global/slices/modal';
 import { userReducer } from '../global/slices/user';
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   toastr: toastrReducer,
   device: deviceReducer,
+  car: carReducer,
 });
 
 export const store = configureStore({
