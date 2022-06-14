@@ -19,7 +19,7 @@ const Page = () => {
   return (
     <div className="container">
       <AddCar />
-      <CarsList />
+      {/* <CarsList /> */}
     </div>
   );
 };

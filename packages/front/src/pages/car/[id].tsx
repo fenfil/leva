@@ -32,7 +32,10 @@ const Page = () => {
   const options = Array.from(Object.entries(data));
 
   return (
-    <div className="container">
+    <div className="container wrapper">
+      <legend>
+        {data.name} {data.verified ? 'verified' : 'not verified'}
+      </legend>
       <table className="table">
         <tbody>
           {options.map((o) => (
@@ -43,7 +46,6 @@ const Page = () => {
           ))}
         </tbody>
       </table>
-      {data.name} {data.verified ? 'verified' : 'not verified'}
     </div>
   );
 };
