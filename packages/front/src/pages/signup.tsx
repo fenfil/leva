@@ -23,24 +23,33 @@ const Page = () => {
   };
 
   return (
-    <div className="login">
-      <div className="input-form">
-        <input placeholder="логин" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+    <div className="container">
+      <div className="row justify-content-md-center">
+        <div className="wrapper col-5">
+          <div className="input-form">
+            <input placeholder="логин" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+          <div className="input-form">
+            <input
+              placeholder="пароль"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="input-form">
+            <input placeholder="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="log">
+            <button type="button" onClick={submit}>
+              sign up
+            </button>
+          </div>
+          <p>
+            Уже есть аккаунт? <a href="/login">войти</a>
+          </p>
+        </div>
       </div>
-      <div className="input-form">
-        <input placeholder="пароль" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </div>
-      <div className="input-form">
-        <input placeholder="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </div>
-      <div className="log">
-        <button type="button" onClick={submit}>
-          sign up
-        </button>
-      </div>
-      <p>
-        Уже есть аккаунт? <a href="/login">войти</a>
-      </p>
     </div>
   );
 };
