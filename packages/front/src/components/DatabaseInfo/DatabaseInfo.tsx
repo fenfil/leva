@@ -3,6 +3,8 @@ import { handleError } from '@global/utils/handleError';
 import { Box, Tab, Tabs } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
+import styles from './styles.module.scss';
+
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
@@ -16,6 +18,8 @@ export const DatabaseInfo = () => {
     users: any[];
     requests: any[];
   }>(null);
+  const [sortBy, setSortBy] = useState<string>(null);
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>(null);
   const [tabIndex, setTabIndex] = useState(0);
 
   const load = async () => {
@@ -34,32 +38,69 @@ export const DatabaseInfo = () => {
   if (!data) {
     return null;
   }
+
   const tab = ['cars', 'users', 'requests'][tabIndex];
 
-  const options = Array.from(Object.keys(data[tab][0]));
+  const options = data[tab][0] ? Array.from(Object.keys(data[tab][0])) : [];
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setSortDirection(null);
+    setSortBy(null);
     setTabIndex(newValue);
   };
+  const handleTitleClick = (e) => {
+    const key = e.target.innerText;
+    if (key === sortBy) {
+      if (sortDirection === 'asc') {
+        setSortDirection('desc');
+      } else if (sortDirection === 'desc') {
+        setSortDirection(null);
+      } else {
+        setSortDirection('asc');
+      }
+    } else {
+      setSortDirection('asc');
+      setSortBy(key);
+    }
+  };
+
+  const sortedData =
+    sortDirection && sortBy
+      ? [...data[tab]].sort((a, b) => (a[sortBy] > b[sortBy] ? 1 : -1) * (sortDirection === 'asc' ? 1 : -1))
+      : data[tab];
 
   return (
     <div className="container wrapper mt-4">
-      <Tabs value={tab} onChange={handleChange} aria-label="basic tabs example">
+      <Tabs value={tabIndex} onChange={handleChange} aria-label="basic tabs example">
         <Tab label="Cars" {...a11yProps(0)} />
         <Tab label="Users" {...a11yProps(1)} />
         <Tab label="Requests" {...a11yProps(2)} />
       </Tabs>
-      {data[tab].length && (
+      {sortedData.length ? (
         <table className="table">
-          <thead>
+          <thead className={styles.thead}>
             <tr>
               {options.map((o) => (
-                <td key={o}>{o}</td>
+                <td
+                  key={o}
+                  onClick={handleTitleClick}
+                  className={
+                    o === sortBy
+                      ? sortDirection === 'asc'
+                        ? styles.ascCol
+                        : sortDirection === 'desc'
+                        ? styles.descCol
+                        : ''
+                      : ''
+                  }
+                >
+                  {o}
+                </td>
               ))}
             </tr>
           </thead>
           <tbody>
-            {data[tab].map((d) => (
+            {sortedData.map((d) => (
               <tr key={d.id}>
                 {options.map((o) => (
                   <td key={o}>{d[o]}</td>
@@ -68,7 +109,7 @@ export const DatabaseInfo = () => {
             ))}
           </tbody>
         </table>
-      )}
+      ) : null}
     </div>
   );
 };
