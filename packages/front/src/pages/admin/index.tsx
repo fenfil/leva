@@ -1,5 +1,6 @@
 import { AddCar } from '@/components/AddCar/AddCar';
 import { CarsList } from '@/components/CarList/CarsList';
+import { DatabaseInfo } from '@/components/DatabaseInfo/DatabaseInfo';
 import { useOnlyAdmin } from '@global/hooks/useOnlyAdmin';
 import { fetchUser } from '@global/slices/user';
 import { api } from '@global/utils/api';
@@ -19,6 +20,7 @@ const Page = () => {
   return (
     <div className="container">
       <AddCar />
+      <DatabaseInfo />
       {/* <CarsList /> */}
     </div>
   );
