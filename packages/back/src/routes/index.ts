@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { getApiAllRouter } from './all';
+import { getApiAllRouter } from './admin';
 import { getApiAuthRouter } from './auth';
 import { getApiCarRouter } from './car';
 import { getApiRequestRouter } from './request';
@@ -13,7 +13,7 @@ export const getRouter = async () => {
   router.use('/auth', await getApiAuthRouter());
   router.use('/car', await getApiCarRouter());
   router.use('/request', await getApiRequestRouter());
-  router.use('/all', await getApiAllRouter());
+  router.use('/admin', await getApiAllRouter());
 
   return router;
 };

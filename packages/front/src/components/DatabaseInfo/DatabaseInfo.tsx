@@ -3,6 +3,7 @@ import { handleError } from '@global/utils/handleError';
 import { Box, Tab, Tabs } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
+import { Record } from './Record';
 import styles from './styles.module.scss';
 
 function a11yProps(index: number) {
@@ -40,6 +41,11 @@ const localizedOptions = {
     phone: 'телефон',
   },
 };
+const allOptions = {
+  cars: ['id', 'name', 'year', 'mileage', 'color', 'verifierId', 'createdAt', 'updatedAt'],
+  users: ['id', 'role', 'name', 'email', 'passwordHash', 'createdAt', 'updatedAt'],
+  requests: ['id', 'name', 'phone', 'createdAt', 'updatedAt'],
+};
 
 export const DatabaseInfo = () => {
   const [data, setData] = useState<{
@@ -53,7 +59,7 @@ export const DatabaseInfo = () => {
 
   const load = async () => {
     try {
-      const res = await api.get('/all');
+      const res = await api.get('/admin/all');
       setData(res.data);
     } catch (error) {
       handleError('Error', error);
@@ -70,7 +76,7 @@ export const DatabaseInfo = () => {
 
   const tab = ['cars', 'users', 'requests'][tabIndex];
 
-  const options = data[tab][0] ? Array.from(Object.keys(data[tab][0])) : [];
+  const options = allOptions[tab];
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setSortDirection(null);
@@ -130,11 +136,7 @@ export const DatabaseInfo = () => {
           </thead>
           <tbody>
             {sortedData.map((d) => (
-              <tr key={d.id}>
-                {options.map((o) => (
-                  <td key={o}>{d[o]}</td>
-                ))}
-              </tr>
+              <Record {...d} model={tab} key={d.id} />
             ))}
           </tbody>
         </table>

@@ -24,16 +24,16 @@ export const AddCar = () => {
       <div className="col-4 wrapper">
         <legend>Добавить новую машину</legend>
         <div className="mb-3">
-          <TextField label="name" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
+          <TextField label="название" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className="mb-3">
-          <TextField label="year" variant="standard" value={year} onChange={(e) => setYear(e.target.value)} />
+          <TextField label="год" variant="standard" value={year} onChange={(e) => setYear(e.target.value)} />
         </div>
         <div className="mb-3">
-          <TextField label="mileage" variant="standard" value={mileage} onChange={(e) => setMileage(e.target.value)} />
+          <TextField label="пробег" variant="standard" value={mileage} onChange={(e) => setMileage(e.target.value)} />
         </div>
         <div className="mb-3">
-          <TextField label="color" variant="standard" value={color} onChange={(e) => setColor(e.target.value)} />
+          <TextField label="цвет" variant="standard" value={color} onChange={(e) => setColor(e.target.value)} />
         </div>
         <div className="mb-3">
           <button type="button" className="btn btn-primary" onClick={submit}>
