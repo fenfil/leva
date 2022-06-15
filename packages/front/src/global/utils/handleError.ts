@@ -26,7 +26,7 @@ export const handleError = (errorTitle: string, error: AxiosError) => {
     // The request was made but no response was received
     // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
     // http.ClientRequest in node.js
-    toastr.error(errorTitle, 'Internal Server Error');
+    toastr.error(errorTitle, 'Неизвестная ошибка');
   } else if (Array.isArray(error)) {
     toastr.error(errorTitle, error.join('\n'));
   } else if (typeof error === 'string') {
@@ -34,7 +34,7 @@ export const handleError = (errorTitle: string, error: AxiosError) => {
   } else {
     console.log('default error');
     // Something happened in setting up the request that triggered an Error
-    toastr.error(errorTitle, 'Internal Error');
+    toastr.error(errorTitle, 'Неизвестная ошибка');
   }
   console.error(error);
 };

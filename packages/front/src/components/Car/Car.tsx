@@ -18,10 +18,10 @@ export const Car = ({ car }: { car: CleanCar }) => {
     e.stopPropagation();
     try {
       await api.post('/car/verify', { carId: car.id });
-      toastr.success('Verified', '');
+      toastr.success('Верифицировано', '');
       setVerified(true);
     } catch (error) {
-      handleError('Error', error);
+      handleError('Ошибка', error);
     }
   };
   return (
@@ -32,7 +32,7 @@ export const Car = ({ car }: { car: CleanCar }) => {
         ''
       ) : (
         <button type="button" className="btn btn-success" onClick={verify}>
-          verify
+          Верифицировать
         </button>
       )}
     </div>

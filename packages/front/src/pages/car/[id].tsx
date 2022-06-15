@@ -16,7 +16,7 @@ const Page = () => {
         setData(res.data);
       }
     } catch (error) {
-      handleError('Error', error);
+      handleError('Ошибка', error);
     }
   };
 
@@ -34,7 +34,7 @@ const Page = () => {
   return (
     <div className="container wrapper">
       <legend>
-        {data.name} {data.verified ? 'verified' : 'not verified'}
+        {data.name} {data.verified ? 'верифицирована' : 'не верифицирована'}
       </legend>
       <table className="table">
         <tbody>

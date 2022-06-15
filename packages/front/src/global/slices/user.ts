@@ -25,7 +25,7 @@ export const fetchUser = createAsyncThunk<FetchUserResponse, void>('user/fetchUs
     const response = await api.get<FetchUserResponse>('/user');
     return response.data;
   } catch (error) {
-    handleError("Can't get user", error);
+    handleError('Ошибка', error);
     return Promise.reject();
   }
 });
@@ -34,7 +34,7 @@ export const logout = createAsyncThunk<FetchUserResponse>('user/logout', async (
   try {
     await api.get<FetchUserResponse>('/auth/logout');
   } catch (error) {
-    handleError("Can't log out", error);
+    handleError('Ошибка', error);
     return Promise.reject();
   }
 });

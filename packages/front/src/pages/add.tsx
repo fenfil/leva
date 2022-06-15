@@ -15,7 +15,7 @@ const Page = () => {
         </div>
         <div className="mb-3">
           <button type="button" className="btn btn-primary" onClick={() => dispatch(addCar({ name }))}>
-            Add car
+            Добавить
           </button>
         </div>
       </form>

@@ -17,14 +17,14 @@ export const bootstrapPassport = () => {
           });
 
           if (!user) {
-            return done(new ServerError(`Incorrect username`, 422), false, {
-              message: `Incorrect username`,
+            return done(new ServerError(`Неправильный логин`, 422), false, {
+              message: `Неправильный логин`,
             });
           }
           const isCorrect = await user.verifyPassword(password);
           if (!isCorrect) {
-            return done(new ServerError('Incorrect password', 422), false, {
-              message: 'Incorrect password',
+            return done(new ServerError('Неправильный пароль', 422), false, {
+              message: 'Неправильный пароль',
             });
           }
           done(null, user);

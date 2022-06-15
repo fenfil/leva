@@ -26,7 +26,7 @@ export const fetchCars = createAsyncThunk<CleanCar[]>('car/fetchCars', async (pa
     const res = await api.get<CleanCar[]>('/car');
     return res.data;
   } catch (error) {
-    handleError("Can't get cars", error);
+    handleError('Ошибка', error);
     return Promise.reject();
   }
 });
@@ -34,9 +34,9 @@ export const fetchCars = createAsyncThunk<CleanCar[]>('car/fetchCars', async (pa
 export const addCar = createAsyncThunk<any, any>('car/addCar', async (params, { dispatch }) => {
   try {
     await api.post('/car', params);
-    toastr.success('Yay', 'New car added!');
+    toastr.success('Машина добавлена!', '');
   } catch (error) {
-    handleError("Can't get cars", error);
+    handleError('Ошибка', error);
     return Promise.reject();
   }
 });

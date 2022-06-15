@@ -20,7 +20,7 @@ export const errorHandler = async (error: Error, req: Request, res: Response, ne
       if (error.critical) {
         logger.error(error);
         return res.status(500).json({
-          error: 'Internal Server Error',
+          error: 'Неизвестная ошибка',
         });
       }
       return res.status(error.status).json({
@@ -46,9 +46,9 @@ export const errorHandler = async (error: Error, req: Request, res: Response, ne
     logger.error(error);
 
     res.status(500).json({
-      error: 'Internal Server Error',
+      error: 'Неизвестная ошибка',
     });
   } catch (err) {
-    logger.error("Can't send response", err);
+    logger.error('Неизвестная ошибка', err);
   }
 };

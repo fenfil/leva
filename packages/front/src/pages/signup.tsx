@@ -18,17 +18,17 @@ const Page = () => {
       await dispatch(fetchUser());
       await router.push('/');
     } catch (error) {
-      handleError('Error', error);
+      handleError('Ошибка', error);
     }
   };
 
   return (
     <div className="login">
       <div className="input-form">
-        <input placeholder="name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input placeholder="логин" type="text" value={name} onChange={(e) => setName(e.target.value)} />
       </div>
       <div className="input-form">
-        <input placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input placeholder="пароль" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       <div className="input-form">
         <input placeholder="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -39,7 +39,7 @@ const Page = () => {
         </button>
       </div>
       <p>
-        Already have an Account? <a href="/login">login</a>
+        Уже есть аккаунт? <a href="/login">войти</a>
       </p>
     </div>
   );

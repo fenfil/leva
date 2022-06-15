@@ -12,6 +12,35 @@ function a11yProps(index: number) {
   };
 }
 
+const localizedOptions = {
+  cars: {
+    id: 'id',
+    createdAt: 'дата создания',
+    updatedAt: 'дата обновления',
+    name: 'название',
+    year: 'год',
+    mileage: 'пробег',
+    color: 'цвет',
+    verifierId: 'id модератора',
+  },
+  users: {
+    id: 'id',
+    role: 'роль',
+    name: 'логин',
+    email: 'почта',
+    passwordHash: 'хэш пароля',
+    createdAt: 'дата создания',
+    updatedAt: 'дата обновления',
+  },
+  requests: {
+    id: 'id',
+    createdAt: 'дата создания',
+    updatedAt: 'дата обновления',
+    name: 'имя',
+    phone: 'телефон',
+  },
+};
+
 export const DatabaseInfo = () => {
   const [data, setData] = useState<{
     cars: any[];
@@ -72,9 +101,9 @@ export const DatabaseInfo = () => {
   return (
     <div className="container wrapper mt-4">
       <Tabs value={tabIndex} onChange={handleChange} aria-label="basic tabs example">
-        <Tab label="Cars" {...a11yProps(0)} />
-        <Tab label="Users" {...a11yProps(1)} />
-        <Tab label="Requests" {...a11yProps(2)} />
+        <Tab label="Машины" {...a11yProps(0)} />
+        <Tab label="Пользователи" {...a11yProps(1)} />
+        <Tab label="Заявки" {...a11yProps(2)} />
       </Tabs>
       {sortedData.length ? (
         <table className="table">
@@ -94,7 +123,7 @@ export const DatabaseInfo = () => {
                       : ''
                   }
                 >
-                  {o}
+                  {localizedOptions[tab][o]}
                 </td>
               ))}
             </tr>

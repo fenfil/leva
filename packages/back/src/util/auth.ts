@@ -14,7 +14,7 @@ const authorize = async (user: User, requiredRole: UserRole = UserRole.bot) => {
     return;
   }
 
-  throw new ServerError('Not authorized', 401);
+  throw new ServerError('Не авторизован', 401);
 };
 
 /**

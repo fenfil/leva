@@ -12,9 +12,9 @@ const Page = () => {
   const request = async () => {
     try {
       await api.post('/request', { name, phone });
-      toastr.success('We will call you back soon', '');
+      toastr.success('Мы скоро перезвоним', '');
     } catch (error) {
-      handleError('Error', error);
+      handleError('Ошибка', error);
     }
   };
 
@@ -40,16 +40,16 @@ const Page = () => {
       </div>
       <div className="row justify-content-md-center ">
         <form className="col-4 wrapper">
-          <legend>Leave your data here</legend>
+          <legend>Мы вам перезвоним!</legend>
           <div className="mb-3 ">
-            <TextField label="Name" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
+            <TextField label="Имя" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="mb-3">
-            <TextField label="Phone" variant="standard" value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <TextField label="Телефон" variant="standard" value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
           <div className="mb-3">
             <button type="button" className="btn btn-primary" onClick={request}>
-              Request call
+              Отправить
             </button>
           </div>
         </form>

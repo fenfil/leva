@@ -24,14 +24,14 @@ export const Header = () => {
           <nav className="nav">
             {isAdmin && (
               <a className="nav__link" href="/admin">
-                Admin
+                Админка
               </a>
             )}
             <a className="nav__link" href="/about">
-              About
+              О нас
             </a>
             <a className="nav__link" href="/verified">
-              Verified
+              Машины
             </a>
             {user ? (
               <span className="nav__user" onClick={submitLogout}>
@@ -39,7 +39,7 @@ export const Header = () => {
               </span>
             ) : (
               <a className="nav__link" href="/login">
-                login
+                Войти
               </a>
             )}
           </nav>

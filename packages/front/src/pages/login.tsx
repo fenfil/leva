@@ -17,29 +17,38 @@ const Page = () => {
       await dispatch(fetchUser());
       await router.push('/');
     } catch (error) {
-      handleError('Error', error);
+      handleError('Ошибка', error);
     }
   };
 
   return (
-    <div className="login">
-      <div className="input-form">
-        <input placeholder="name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+    <div className="container">
+      <div className="row justify-content-md-center">
+        <div className="wrapper col-5">
+          <div className="input-form">
+            <input placeholder="логин" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+          <div className="input-form">
+            <input
+              placeholder="пароль"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <div className="log">
+            <button type="button" onClick={submit}>
+              Войти
+            </button>
+          </div>
+          <p>
+            Еще нет аккаунта?{' '}
+            <a href="signup" className="forget">
+              зарегистрироваться
+            </a>
+          </p>
+        </div>
       </div>
-      <div className="input-form">
-        <input placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </div>
-      <div className="log">
-        <button type="button" onClick={submit}>
-          Login
-        </button>
-      </div>
-      <p>
-        Don't have an account?{' '}
-        <a href="signup" className="forget">
-          sign up
-        </a>
-      </p>
     </div>
   );
 };

@@ -1,11 +1,8 @@
-import { CleanCar } from '@global/slices/cars';
 import { api } from '@global/utils/api';
 import { handleError } from '@global/utils/handleError';
 import { TextField } from '@material-ui/core';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { toastr } from 'react-redux-toastr';
-
-import styles from './styles.module.scss';
 
 export const AddCar = () => {
   const [name, setName] = useState('');
@@ -16,16 +13,16 @@ export const AddCar = () => {
   const submit = async () => {
     try {
       await api.post('/car', { name, year, mileage, color });
-      toastr.success('Car added', '');
+      toastr.success('Машина добавлена', '');
     } catch (error) {
-      handleError('Error', error);
+      handleError('Ошибка', error);
     }
   };
 
   return (
     <div className="row justify-content-md-center">
       <div className="col-4 wrapper">
-        <legend>Add new car</legend>
+        <legend>Добавить новую машину</legend>
         <div className="mb-3">
           <TextField label="name" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
@@ -40,7 +37,7 @@ export const AddCar = () => {
         </div>
         <div className="mb-3">
           <button type="button" className="btn btn-primary" onClick={submit}>
-            Submit
+            Отправить
           </button>
         </div>
       </div>
