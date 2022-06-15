@@ -15,6 +15,8 @@ export const getApiAllRouter = () => {
       requests: RequestModel as any,
       users: User as any,
     };
+    console.log(req.body);
+
     try {
       const modelToUpdate = models[model];
       if (!modelToUpdate) {

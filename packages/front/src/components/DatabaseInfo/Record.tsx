@@ -32,7 +32,7 @@ export const Record = ({ model, ...params }) => {
     return () => {
       document.removeEventListener('keypress', updateDb);
     };
-  }, [!!field]);
+  });
 
   const handleChange = (option: string) => (e) => {
     setData({ ...data, [option]: e.target.value });
@@ -45,6 +45,10 @@ export const Record = ({ model, ...params }) => {
     setData({ ...data, [option]: params[option] });
     setField(option);
   };
+  console.log({
+    data,
+    params,
+  });
 
   return (
     <tr>
