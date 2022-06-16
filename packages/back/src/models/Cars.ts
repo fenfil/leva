@@ -16,6 +16,9 @@ export class Car extends Model<Car, {}> {
   id: number;
 
   @Column
+  vin: string;
+
+  @Column
   name: string;
 
   @Column(INTEGER.UNSIGNED)

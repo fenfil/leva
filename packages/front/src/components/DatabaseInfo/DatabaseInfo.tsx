@@ -19,6 +19,7 @@ const localizedOptions = {
     createdAt: 'дата создания',
     updatedAt: 'дата обновления',
     name: 'название',
+    vin: 'номер',
     year: 'год',
     mileage: 'пробег',
     color: 'цвет',
@@ -42,7 +43,7 @@ const localizedOptions = {
   },
 };
 const allOptions = {
-  cars: ['id', 'name', 'year', 'mileage', 'color', 'verifierId', 'createdAt', 'updatedAt'],
+  cars: ['id', 'name', 'vin', 'year', 'mileage', 'color', 'verifierId', 'createdAt', 'updatedAt'],
   users: ['id', 'role', 'name', 'email', 'passwordHash', 'createdAt', 'updatedAt'],
   requests: ['id', 'name', 'phone', 'createdAt', 'updatedAt'],
 };

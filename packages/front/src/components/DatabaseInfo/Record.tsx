@@ -3,7 +3,7 @@ import { handleError } from '@global/utils/handleError';
 import { useEffect, useState } from 'react';
 
 const allOptions = {
-  cars: ['id', 'name', 'year', 'mileage', 'color', 'verifierId', 'createdAt', 'updatedAt'],
+  cars: ['id', 'name', 'vin', 'year', 'mileage', 'color', 'verifierId', 'createdAt', 'updatedAt'],
   users: ['id', 'role', 'name', 'email', 'passwordHash', 'createdAt', 'updatedAt'],
   requests: ['id', 'name', 'phone', 'createdAt', 'updatedAt'],
 };
@@ -13,6 +13,7 @@ const Select = () => {};
 export const Record = ({ model, ...params }) => {
   const [data, setData] = useState({});
   const [field, setField] = useState<string>(null);
+  console.log(params);
 
   const options = allOptions[model];
 
@@ -45,10 +46,6 @@ export const Record = ({ model, ...params }) => {
     setData({ ...data, [option]: params[option] });
     setField(option);
   };
-  console.log({
-    data,
-    params,
-  });
 
   return (
     <tr>

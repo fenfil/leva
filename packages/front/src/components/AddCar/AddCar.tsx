@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { toastr } from 'react-redux-toastr';
 
 export const AddCar = () => {
+  const [vin, setVin] = useState('');
   const [name, setName] = useState('');
   const [year, setYear] = useState('');
   const [mileage, setMileage] = useState('');
@@ -12,7 +13,7 @@ export const AddCar = () => {
 
   const submit = async () => {
     try {
-      await api.post('/car', { name, year, mileage, color });
+      await api.post('/car', { vin, name, year, mileage, color });
       toastr.success('Машина добавлена', '');
     } catch (error) {
       handleError('Ошибка', error);
@@ -25,6 +26,9 @@ export const AddCar = () => {
         <legend>Добавить новую машину</legend>
         <div className="mb-3">
           <TextField label="название" variant="standard" value={name} onChange={(e) => setName(e.target.value)} />
+        </div>
+        <div className="mb-3">
+          <TextField label="номер" variant="standard" value={vin} onChange={(e) => setVin(e.target.value)} />
         </div>
         <div className="mb-3">
           <TextField label="год" variant="standard" value={year} onChange={(e) => setYear(e.target.value)} />

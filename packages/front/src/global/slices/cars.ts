@@ -9,6 +9,7 @@ export interface CleanCar {
   name: string;
   verified: boolean;
   year: number;
+  vin: string;
   mileage: number;
   color: string;
 }
