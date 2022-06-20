@@ -1,5 +1,7 @@
+import { useTypedSelector } from '@/store';
 import { api } from '@global/utils/api';
 import { handleError } from '@global/utils/handleError';
+import { UserRole } from '@global/utils/UserRole';
 import { Box, Tab, Tabs } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 
@@ -57,8 +59,12 @@ export const DatabaseInfo = () => {
   const [sortBy, setSortBy] = useState<string>(null);
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>(null);
   const [tabIndex, setTabIndex] = useState(0);
+  const role = useTypedSelector((s) => s.user.role);
 
   const load = async () => {
+    if (role !== UserRole.admin) {
+      return;
+    }
     try {
       const res = await api.get('/admin/all');
       setData(res.data);
@@ -68,8 +74,10 @@ export const DatabaseInfo = () => {
   };
 
   useEffect(() => {
-    load();
-  }, []);
+    if (role === UserRole.admin) {
+      load();
+    }
+  }, [role]);
 
   if (!data) {
     return null;
